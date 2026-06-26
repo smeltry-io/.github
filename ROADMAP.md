@@ -1367,6 +1367,8 @@ Feature: Redémarrage PXE piloté par l'opérateur
 
 > Chaque action métier significative (changement de phase, allocation de machine, réservation IP, suppression) crée une ressource `AuditEvent` dans le namespace concerné (`tenant-<slug>` pour les actions tenant, `portal-system` pour les actions admin). Le RBAC existant délimite naturellement la visibilité. Un champ `spec.ttl` et un controller de purge évitent la croissance non bornée de l'etcd.
 
+> **Question ouverte — sémantique de l'émission :** l'implémentation actuelle traite l'émission d'un `AuditEvent` comme *best-effort* : une erreur est loguée mais ne bloque pas la réconciliation. Faut-il adopter une sémantique *blocking* pour certains types d'événements ? Arguments pour le *best-effort* : un échec d'écriture etcd (quota, indisponibilité temporaire) ne doit pas empêcher l'allocation d'une machine ou le passage de phase — l'infrastructure prime sur la traçabilité. Arguments pour le *blocking* : dans un contexte réglementaire ou de conformité, un événement non produit est un trou d'audit inacceptable ; on préfère alors échouer l'action plutôt que de la laisser passer silencieusement. Piste intermédiaire : rendre la sémantique configurable par type d'événement (`spec.required: true/false` sur l'appel, ou un flag opérateur `--audit-strict`). **À trancher avant d'exposer le log d'audit à des exigences de conformité.**
+
 ---
 
 #### Story — Émission d'un AuditEvent par l'opérateur `L`
