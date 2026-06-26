@@ -21,8 +21,8 @@ Epic 1 → Epic 2 → Epic 9 → Epic 3 → Epic 5 → Epic 4 → Epic 10 → Ep
 | 2 | **Epic 2 — Tenants** | ✅ Controller + 9 tests envtest mergés (PR #1) | Dépend de l'Epic 1 (RoleBindings sur groupes Authentik) ; crée le socle RBAC |
 | 3 | **Epic 9 — Reboot PXE** | ✅ ADR-001 rédigé et mergé (PR #3) ; prototype à valider | L'ADR doit être rédigé avant de coder les Epics 3 et 4 — mécanisme sur le chemin critique du provisioning |
 | 4 | **Epic 3 — ServerClaim** | ✅ Controller + 10 tests mergés (PR #4) | Plus simple qu'un cluster (1 machine, pas de CAPI, pas d'addons) ; valide le pipeline Netbox → machinecfg → Tinkerbell |
-| 5 | **Epic 5 — Addons** | ⏳ À faire | Pré-requis direct de l'Epic 4 (étape 6 de la séquence ClusterClaim) |
-| 6 | **Epic 4 — ClusterClaim** | 🔄 Controller implémenté + 18 tests mergés (PR #6) ; scale up/down/delete à faire | Feature centrale ; implémentée une fois les Epics 3, 5 et 9 stabilisés |
+| 5 | **Epic 5 — Addons** | ✅ 7 tests stepWatchAddons mergés (PR #9) ; stories 5.1–5.4 couvertes | Pré-requis direct de l'Epic 4 (étape 6 de la séquence ClusterClaim) |
+| 6 | **Epic 4 — ClusterClaim** | ✅ Controller + 18 tests (PR #6/7) ; scale up/down + délai de grâce (PR #8) | Feature centrale ; implémentée une fois les Epics 3, 5 et 9 stabilisés |
 | 7 | **Epic 10 — Audit log** | ⏳ À faire | Transversal ; s'insère naturellement après que le backend produit des événements |
 | 8 | **Epic 6 — Headlamp** | ⏳ À faire | UI sur le backend stabilisé |
 | 8 | **Epic 7 — CLI** | ⏳ À faire | Peut être développée en parallèle de l'Epic 6 (même kube-apiserver en backend) |
