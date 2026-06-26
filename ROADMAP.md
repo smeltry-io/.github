@@ -17,7 +17,7 @@ Epic 1 → Epic 2 → Epic 9 → Epic 3 → Epic 5 → Epic 4 → Epic 10 → Ep
 | Ordre | Epic | Statut | Justification |
 |-------|------|--------|---------------|
 | 0 | **Epic 8 — Supply chain** | ✅ SBOM + Cosign mergé (PR #2) ; CI sans Nix (PR #5) | CI/CD et SBOM en place dès le premier commit sur chaque repo |
-| 1 | **Epic 1 — Auth** | ⏳ À faire | Pré-requis absolu : sans OIDC sur le kube-apiserver, rien ne se teste de bout en bout |
+| 1 | **Epic 1 — Auth** | ✅ ADR-002 + ClusterRoles smeltry-admin/catalog-reader mergés (PR #10) | Pré-requis absolu : sans OIDC sur le kube-apiserver, rien ne se teste de bout en bout |
 | 2 | **Epic 2 — Tenants** | ✅ Controller + 9 tests envtest mergés (PR #1) | Dépend de l'Epic 1 (RoleBindings sur groupes Authentik) ; crée le socle RBAC |
 | 3 | **Epic 9 — Reboot PXE** | ✅ ADR-001 rédigé et mergé (PR #3) ; prototype à valider | L'ADR doit être rédigé avant de coder les Epics 3 et 4 — mécanisme sur le chemin critique du provisioning |
 | 4 | **Epic 3 — ServerClaim** | ✅ Controller + 10 tests mergés (PR #4) | Plus simple qu'un cluster (1 machine, pas de CAPI, pas d'addons) ; valide le pipeline Netbox → machinecfg → Tinkerbell |
