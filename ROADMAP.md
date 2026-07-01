@@ -701,7 +701,7 @@ Feature: Addon de mise à jour automatique des nœuds
 
 ---
 
-#### Story — Liste des clusters de l'utilisateur `M`
+#### Story — Liste des clusters de l'utilisateur `M` ✅
 
 ```gherkin
 Feature: Vue liste des clusters
@@ -726,7 +726,7 @@ Feature: Vue liste des clusters
 
 ---
 
-#### Story — Vue de détail d'un cluster `M`
+#### Story — Vue de détail d'un cluster `M` ✅
 
 ```gherkin
 Feature: Vue de détail d'un cluster dans Headlamp
@@ -750,7 +750,7 @@ Feature: Vue de détail d'un cluster dans Headlamp
 
 ---
 
-#### Story — Scale up et scale down depuis l'UI `M`
+#### Story — Scale up et scale down depuis l'UI `M` ✅
 
 ```gherkin
 Feature: Redimensionnement d'un cluster depuis Headlamp
@@ -776,7 +776,7 @@ Feature: Redimensionnement d'un cluster depuis Headlamp
 
 ---
 
-#### Story — Suppression avec délai de grâce depuis l'UI `S`
+#### Story — Suppression avec délai de grâce depuis l'UI `S` ✅
 
 ```gherkin
 Feature: Suppression sécurisée d'un cluster depuis Headlamp
@@ -849,7 +849,7 @@ Feature: Vérification de disponibilité des machines
 
 ---
 
-#### Story — Formulaire de création d'un ClusterClaim `L`
+#### Story — Formulaire de création d'un ClusterClaim `L` ✅
 
 ```gherkin
 Feature: Création de ClusterClaim depuis l'interface
