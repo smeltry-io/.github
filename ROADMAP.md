@@ -1371,7 +1371,7 @@ Feature: Redémarrage PXE piloté par l'opérateur
 
 ---
 
-#### Story — Émission d'un AuditEvent par l'opérateur `L`
+#### Story — Émission d'un AuditEvent par l'opérateur `L` ✅
 
 ```gherkin
 Feature: Création d'AuditEvents par smeltry-operator
@@ -1442,7 +1442,7 @@ Feature: Historique global des actions pour l'administrateur
 
 ---
 
-#### Story — Purge automatique des AuditEvents via TTL `S`
+#### Story — Purge automatique des AuditEvents via TTL `S` ✅
 
 ```gherkin
 Feature: Expiration automatique des AuditEvents
