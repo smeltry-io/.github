@@ -1394,7 +1394,7 @@ Feature: Création d'AuditEvents par smeltry-operator
 
 ---
 
-#### Story — Vue audit log pour le tenant `M`
+#### Story — Vue audit log pour le tenant `M` ✅
 
 ```gherkin
 Feature: Historique des actions pour l'utilisateur tenant
