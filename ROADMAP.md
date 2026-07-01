@@ -1418,7 +1418,7 @@ Feature: Historique des actions pour l'utilisateur tenant
 
 ---
 
-#### Story — Vue audit log global pour l'administrateur `M`
+#### Story — Vue audit log global pour l'administrateur `M` ✅
 
 ```gherkin
 Feature: Historique global des actions pour l'administrateur
