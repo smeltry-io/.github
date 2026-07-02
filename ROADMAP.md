@@ -994,7 +994,7 @@ Feature: Téléchargement du kubeconfig depuis Headlamp
 
 ---
 
-#### Story — Vérification de la connectivité aux APIs `S`
+#### Story — Vérification de la connectivité aux APIs `S` ✅
 
 ```gherkin
 Feature: Vérification de la connectivité réseau avant toute commande
