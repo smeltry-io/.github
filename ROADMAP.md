@@ -24,7 +24,7 @@ Epic 1 → Epic 2 → Epic 9 → Epic 3 → Epic 5 → Epic 4 → Epic 10 → Ep
 | 5 | **Epic 5 — Addons** | ✅ 7 tests stepWatchAddons mergés (PR #9) ; stories 5.1–5.4 couvertes | Pré-requis direct de l'Epic 4 (étape 6 de la séquence ClusterClaim) |
 | 6 | **Epic 4 — ClusterClaim** | ✅ Controller + 18 tests (PR #6/7) ; scale up/down + délai de grâce (PR #8) | Feature centrale ; implémentée une fois les Epics 3, 5 et 9 stabilisés |
 | 7 | **Epic 10 — Audit log** | ✅ Implémenté (PR #11) | CRD `AuditEvent`, purge controller TTL, émission best-effort depuis `ClusterClaim` |
-| 8 | **Epic 6 — Headlamp** | ⏳ À faire | UI sur le backend stabilisé |
+| 8 | **Epic 6 — Headlamp** | 🔄 En cours — ClusterClaim (liste, détail, scale, suppression, formulaire, kubeconfig, audit) ✅ ; vues admin et ServerClaim ⏳ | UI sur le backend stabilisé |
 | 8 | **Epic 7 — CLI** | ⏳ À faire | Peut être développée en parallèle de l'Epic 6 (même kube-apiserver en backend) |
 | 9 | **Epic 11 — Accounting** | ⏳ À faire | Métriques Prometheus ; nécessite un backend opérationnel pour avoir des données utiles |
 | 10 | **Epic 12 — Release train** | ⏳ À faire | Umbrella chart et `smeltry install` ; a du sens une fois les composants matures |
@@ -802,7 +802,7 @@ Feature: Suppression sécurisée d'un cluster depuis Headlamp
 
 ---
 
-#### Story — Choix du type de machine `M`
+#### Story — Choix du type de machine `M` ✅
 
 ```gherkin
 Feature: Sélection du type de machine par l'utilisateur
@@ -829,7 +829,7 @@ Feature: Sélection du type de machine par l'utilisateur
 
 ---
 
-#### Story — Disponibilité des machines avant création de cluster `M`
+#### Story — Disponibilité des machines avant création de cluster `M` ✅
 
 ```gherkin
 Feature: Vérification de disponibilité des machines
@@ -961,7 +961,7 @@ Feature: Catalogue d'infrastructure administrable depuis Headlamp
 
 ---
 
-#### Story — Téléchargement du kubeconfig `S`
+#### Story — Téléchargement du kubeconfig `S` ✅
 
 ```gherkin
 Feature: Téléchargement du kubeconfig depuis Headlamp
