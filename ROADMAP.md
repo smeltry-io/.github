@@ -894,7 +894,7 @@ Feature: Vue administration des machines
 
 ---
 
-#### Story — Vue exhaustive des clusters pour l'administrateur `M`
+#### Story — Vue exhaustive des clusters pour l'administrateur `M` ✅
 
 ```gherkin
 Feature: Vue administration des clusters
