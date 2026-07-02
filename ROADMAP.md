@@ -1095,7 +1095,7 @@ Feature: Gestion des ClusterClaims via la CLI
 
 ---
 
-#### Story — `smeltry server` — Gestion des serveurs `M`
+#### Story — `smeltry server` — Gestion des serveurs `M` ✅
 
 ```gherkin
 Feature: Gestion des ServerClaims via la CLI
