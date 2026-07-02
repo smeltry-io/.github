@@ -912,7 +912,7 @@ Feature: Vue administration des clusters
 
 ---
 
-#### Story — Supervision de l'état de santé des machines `M`
+#### Story — Supervision de l'état de santé des machines `M` ✅
 
 ```gherkin
 Feature: Santé des machines dans l'interface admin
