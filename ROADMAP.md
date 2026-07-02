@@ -1049,7 +1049,7 @@ Feature: Gestion de l'authentification CLI
 
 ---
 
-#### Story — `smeltry cluster` — Gestion des clusters `M`
+#### Story — `smeltry cluster` — Gestion des clusters `M` ✅
 
 ```gherkin
 Feature: Gestion des ClusterClaims via la CLI
