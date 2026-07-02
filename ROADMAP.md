@@ -1019,7 +1019,7 @@ Feature: Vérification de la connectivité réseau avant toute commande
 
 ---
 
-#### Story — `smeltry auth` — Authentification `M`
+#### Story — `smeltry auth` — Authentification `M` ✅
 
 ```gherkin
 Feature: Gestion de l'authentification CLI
