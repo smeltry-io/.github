@@ -875,7 +875,7 @@ Feature: Création de ClusterClaim depuis l'interface
 
 ---
 
-#### Story — Vue exhaustive des machines pour l'administrateur `M`
+#### Story — Vue exhaustive des machines pour l'administrateur `M` ✅
 
 ```gherkin
 Feature: Vue administration des machines
