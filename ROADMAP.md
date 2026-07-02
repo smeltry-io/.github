@@ -936,7 +936,7 @@ Feature: Santé des machines dans l'interface admin
 
 ---
 
-#### Story — Gestion des SiteConfigs et AddonProfiles depuis l'UI admin `L`
+#### Story — Gestion des SiteConfigs et AddonProfiles depuis l'UI admin `L` ✅
 
 ```gherkin
 Feature: Catalogue d'infrastructure administrable depuis Headlamp
