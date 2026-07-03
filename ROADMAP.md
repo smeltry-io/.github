@@ -1056,7 +1056,7 @@ Feature: Vue de détail d'un serveur dans Headlamp
 
 ---
 
-#### Story — Lancement local de Headlamp avec le plugin intégré `S`
+#### Story — Lancement local de Headlamp avec le plugin intégré `S` ✅ PR #21
 
 ```gherkin
 Feature: Lancement local de Headlamp avec le plugin smeltry-headlamp
