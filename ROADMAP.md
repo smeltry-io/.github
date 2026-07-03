@@ -24,7 +24,7 @@ Epic 1 → Epic 2 → Epic 9 → Epic 3 → Epic 5 → Epic 4 → Epic 10 → Ep
 | 5 | **Epic 5 — Addons** | ✅ 7 tests stepWatchAddons mergés (PR #9) ; stories 5.1–5.4 couvertes | Pré-requis direct de l'Epic 4 (étape 6 de la séquence ClusterClaim) |
 | 6 | **Epic 4 — ClusterClaim** | ✅ Controller + 18 tests (PR #6/7) ; scale up/down + délai de grâce (PR #8) | Feature centrale ; implémentée une fois les Epics 3, 5 et 9 stabilisés |
 | 7 | **Epic 10 — Audit log** | ✅ Implémenté (PR #11) | CRD `AuditEvent`, purge controller TTL, émission best-effort depuis `ClusterClaim` |
-| 8 | **Epic 6 — Headlamp** | 🔄 En cours — ClusterClaim (liste, détail, scale, suppression, formulaire, kubeconfig, audit) ✅ ; vues admin et ServerClaim ⏳ | UI sur le backend stabilisé |
+| 8 | **Epic 6 — Headlamp** | 🔄 En cours — ClusterClaim + vues admin ✅ ; ServerClaim (liste, formulaire, détail) ⏳ | UI sur le backend stabilisé |
 | 8 | **Epic 7 — CLI** | ✅ Toutes stories mergées (PR #9–#13 + smeltry version PR #14) | Peut être développée en parallèle de l'Epic 6 (même kube-apiserver en backend) |
 | 9 | **Epic 11 — Accounting** | ⏳ À faire | Métriques Prometheus ; nécessite un backend opérationnel pour avoir des données utiles |
 | 10 | **Epic 12 — Release train** | ⏳ À faire | Umbrella chart et `smeltry install` ; a du sens une fois les composants matures |
@@ -976,6 +976,82 @@ Feature: Téléchargement du kubeconfig depuis Headlamp
     Given un ClusterClaim en phase "Provisioning"
     When l'utilisateur consulte la vue de détail
     Then le bouton "Télécharger le kubeconfig" est désactivé avec le message "Cluster non disponible"
+```
+
+---
+
+#### Story — Liste des ServerClaims `M`
+
+```gherkin
+Feature: Vue liste des serveurs
+
+  Scenario: L'utilisateur voit ses serveurs
+    Given un utilisateur authentifié dans le namespace "tenant-acme"
+    And deux ServerClaims existants dans ce namespace
+    When il accède à la vue "Mes serveurs" dans Headlamp
+    Then il voit uniquement les deux serveurs du namespace "tenant-acme"
+    And chaque ligne affiche le nom, la phase, le site, l'OS et l'age
+
+  Scenario: L'utilisateur n'a aucun serveur
+    Given un namespace "tenant-acme" sans aucun ServerClaim
+    When l'utilisateur accède à la vue "Mes serveurs"
+    Then un message vide ("Aucun serveur") est affiché avec un bouton de création
+
+  Scenario: Un utilisateur tente d'accéder aux serveurs d'un autre tenant
+    Given une requête API vers le namespace "tenant-other"
+    When le kube-apiserver évalue les droits
+    Then la requête est refusée avec HTTP 403 et le plugin affiche une erreur d'autorisation
+```
+
+---
+
+#### Story — Formulaire de création d'un ServerClaim `M`
+
+```gherkin
+Feature: Création de ServerClaim depuis l'interface
+
+  Scenario: L'utilisateur crée un serveur avec succès
+    Given l'utilisateur est sur le formulaire de création de serveur
+    And il sélectionne machineClass="standard", site="paris-dc1", os="flatcar"
+    When il soumet le formulaire
+    Then un ServerClaim est créé dans son namespace via l'API Kubernetes
+    And il est redirigé vers la vue de détail du serveur avec la phase "Pending"
+
+  Scenario: Le formulaire est soumis avec des données invalides
+    Given l'utilisateur laisse le champ "site" vide
+    When il tente de soumettre le formulaire
+    Then le formulaire affiche une erreur de validation côté client sans appel API
+
+  Scenario: L'API Kubernetes retourne une erreur à la création
+    Given un quota tenant déjà atteint
+    When l'utilisateur soumet le formulaire
+    Then l'API retourne HTTP 403 avec le motif de quota
+    And le formulaire affiche le message d'erreur retourné par le kube-apiserver
+```
+
+---
+
+#### Story — Vue de détail d'un ServerClaim `M`
+
+```gherkin
+Feature: Vue de détail d'un serveur dans Headlamp
+
+  Scenario: L'utilisateur consulte le détail de son serveur
+    Given un ServerClaim "build-01" en phase "Ready"
+    When l'utilisateur clique sur le serveur dans la liste
+    Then il voit : la phase courante, l'IP du serveur (serverIP), le DNS (serverDNS), l'OS, le site et les conditions Kubernetes
+
+  Scenario: Le serveur est en cours de provisioning
+    Given un ServerClaim en phase "Provisioning"
+    When l'utilisateur consulte la vue de détail
+    Then il voit la phase courante et les conditions en attente
+    And le bouton "Supprimer" est désactivé jusqu'à la phase "Ready" ou "Failed"
+
+  Scenario: L'utilisateur supprime un serveur
+    Given un ServerClaim "build-01" en phase "Ready"
+    When l'utilisateur clique sur "Supprimer" et confirme
+    Then le ServerClaim est supprimé via l'API Kubernetes
+    And l'utilisateur est redirigé vers la liste des serveurs
 ```
 
 ---
