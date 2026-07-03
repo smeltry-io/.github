@@ -1005,7 +1005,7 @@ Feature: Vue liste des serveurs
 
 ---
 
-#### Story — Formulaire de création d'un ServerClaim `M`
+#### Story — Formulaire de création d'un ServerClaim `M` ✅ PR #19
 
 ```gherkin
 Feature: Création de ServerClaim depuis l'interface
