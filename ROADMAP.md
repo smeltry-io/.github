@@ -1031,7 +1031,7 @@ Feature: Création de ServerClaim depuis l'interface
 
 ---
 
-#### Story — Vue de détail d'un ServerClaim `M`
+#### Story — Vue de détail d'un ServerClaim `M` ✅ PR #20
 
 ```gherkin
 Feature: Vue de détail d'un serveur dans Headlamp
