@@ -1056,6 +1056,34 @@ Feature: Vue de détail d'un serveur dans Headlamp
 
 ---
 
+#### Story — Lancement local de Headlamp avec le plugin intégré `S`
+
+```gherkin
+Feature: Lancement local de Headlamp avec le plugin smeltry-headlamp
+
+  Scenario: Un développeur lance le plugin en mode watch pour développer
+    Given le repo smeltry-headlamp cloné localement
+    And Headlamp desktop installé sur le poste
+    When le développeur exécute "npm run start" dans le repo
+    Then le plugin est servi en live-reload sur localhost
+    And Headlamp desktop charge automatiquement le plugin depuis le répertoire de plugins local
+    And toute modification de code est reflétée sans redémarrer Headlamp
+
+  Scenario: Un utilisateur installe le plugin dans Headlamp desktop
+    Given l'application Headlamp desktop installée sur le poste
+    And le plugin construit localement ("npm run build")
+    When l'utilisateur exécute "npm run install-local" qui copie le build dans ~/.config/Headlamp/plugins/smeltry/
+    Then Headlamp affiche le plugin smeltry-headlamp au prochain démarrage
+    And l'utilisateur peut accéder à toutes les vues sans déploiement sur le cluster
+
+  Scenario: Le README documente la procédure de développement local
+    Given un développeur consultant le repo smeltry-headlamp
+    When il lit le README
+    Then il trouve les instructions pour lancer le plugin en local en moins de 5 minutes
+```
+
+---
+
 ### Epic 7 — CLI (`smeltry`)
 
 > Stack : Go, Cobra, device flow OIDC
@@ -1300,6 +1328,32 @@ Feature: SBOM des livrables Smeltry
     When la pipeline tente de générer le SBOM
     Then la pipeline échoue et le livrable n'est pas marqué comme publié
     And une notification est envoyée au mainteneur
+```
+
+---
+
+#### Story — Image OCI Headlamp avec le plugin smeltry-headlamp intégré `M`
+
+```gherkin
+Feature: Image OCI Headlamp avec le plugin smeltry-headlamp intégré
+
+  Scenario: Un tag Git publie l'image Headlamp+plugin sur ghcr.io
+    Given un tag "v1.0.0" poussé sur smeltry-headlamp
+    When le workflow GitHub Actions se déclenche
+    Then une image est publiée sur ghcr.io/smeltry-io/headlamp:v1.0.0
+    And le plugin smeltry-headlamp est copié dans /headlamp/plugins/smeltry/ à l'intérieur de l'image
+    And un SBOM est généré et attaché à l'image (Syft + Cosign)
+
+  Scenario: L'opérateur déploie Headlamp sur le cluster de management
+    Given l'image ghcr.io/smeltry-io/headlamp:v1.0.0 disponible
+    When l'opérateur déploie le chart Helm headlamp avec cette image
+    Then Headlamp est accessible et le plugin smeltry-headlamp est actif
+    And l'interface affiche les vues ClusterClaim, ServerClaim et les vues admin
+
+  Scenario: La pipeline échoue si le build du plugin échoue
+    Given une erreur de compilation TypeScript dans le plugin
+    When le workflow tente de construire l'image
+    Then la pipeline s'arrête avant la publication sur ghcr.io
 ```
 
 ---
