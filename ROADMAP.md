@@ -25,7 +25,7 @@ Epic 1 → Epic 2 → Epic 9 → Epic 3 → Epic 5 → Epic 4 → Epic 10 → Ep
 | 6 | **Epic 4 — ClusterClaim** | ✅ Controller + 18 tests (PR #6/7) ; scale up/down + délai de grâce (PR #8) | Feature centrale ; implémentée une fois les Epics 3, 5 et 9 stabilisés |
 | 7 | **Epic 10 — Audit log** | ✅ Implémenté (PR #11) | CRD `AuditEvent`, purge controller TTL, émission best-effort depuis `ClusterClaim` |
 | 8 | **Epic 6 — Headlamp** | 🔄 En cours — ClusterClaim (liste, détail, scale, suppression, formulaire, kubeconfig, audit) ✅ ; vues admin et ServerClaim ⏳ | UI sur le backend stabilisé |
-| 8 | **Epic 7 — CLI** | ⏳ À faire | Peut être développée en parallèle de l'Epic 6 (même kube-apiserver en backend) |
+| 8 | **Epic 7 — CLI** | ✅ Toutes stories mergées (PR #9–#13 + smeltry version PR #14) | Peut être développée en parallèle de l'Epic 6 (même kube-apiserver en backend) |
 | 9 | **Epic 11 — Accounting** | ⏳ À faire | Métriques Prometheus ; nécessite un backend opérationnel pour avoir des données utiles |
 | 10 | **Epic 12 — Release train** | ⏳ À faire | Umbrella chart et `smeltry install` ; a du sens une fois les composants matures |
 | 11 | **Epic 13 — Sécurité opérationnelle** | ⏳ À faire | Durcissement et Network Policies ; finalise le produit avant ouverture publique |
@@ -1125,7 +1125,7 @@ Feature: Gestion des ServerClaims via la CLI
 
 ---
 
-#### Story — `smeltry admin` — Sous-commandes d'administration `M`
+#### Story — `smeltry admin` — Sous-commandes d'administration `M` ✅
 
 ```gherkin
 Feature: Sous-commandes admin de la CLI (accès restreint par RBAC)
@@ -1164,7 +1164,7 @@ Feature: Sous-commandes admin de la CLI (accès restreint par RBAC)
 
 ---
 
-#### Story — `smeltry version` — Version de la CLI et de l'installation `XS`
+#### Story — `smeltry version` — Version de la CLI et de l'installation `XS` ✅
 
 ```gherkin
 Feature: Affichage des versions
