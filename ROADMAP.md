@@ -980,7 +980,7 @@ Feature: Téléchargement du kubeconfig depuis Headlamp
 
 ---
 
-#### Story — Liste des ServerClaims `M`
+#### Story — Liste des ServerClaims `M` ✅
 
 ```gherkin
 Feature: Vue liste des serveurs
