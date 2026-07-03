@@ -1332,7 +1332,7 @@ Feature: SBOM des livrables Smeltry
 
 ---
 
-#### Story — Image OCI Headlamp avec le plugin smeltry-headlamp intégré `M`
+#### Story — Image OCI Headlamp avec le plugin smeltry-headlamp intégré `M` ✅ PR #22
 
 ```gherkin
 Feature: Image OCI Headlamp avec le plugin smeltry-headlamp intégré
